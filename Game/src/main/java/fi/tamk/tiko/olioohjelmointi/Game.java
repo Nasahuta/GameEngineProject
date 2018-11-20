@@ -23,7 +23,7 @@ public class Game extends Application {
     @Override
     public void start(Stage stage) {
         ImageView viewer = new ImageView();
-        Player testi = new Player("src/main/resources/test.jpg");
+        Player testi = new Player("test.jpg");
         Pane pane = new Pane();
 
         viewer.setImage(testi.getImage());
