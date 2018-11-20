@@ -17,13 +17,13 @@ import javafx.scene.layout.Pane;
 import javafx.animation.AnimationTimer;
 import java.util.*;
 
-public class Sovellus extends Application {
+public class Game extends Application {
     private final int KEYBOARD_MOVEMENT_DELTA = 5;
 
     @Override
     public void start(Stage stage) {
         ImageView viewer = new ImageView();
-        Player testi = new Player();
+        Player testi = new Player("src/main/resources/test.jpg");
         Pane pane = new Pane();
 
         viewer.setImage(testi.getImage());
@@ -82,7 +82,7 @@ public class Sovellus extends Application {
         launch(args);
     }
 }
-
+/*
 class Player {
     private int xPosition;
     private int yPosition;
@@ -113,4 +113,4 @@ class Player {
     public int getYPos() {
         return this.yPosition;
     }
-}
+}*/
