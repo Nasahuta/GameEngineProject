@@ -1,5 +1,5 @@
 package fi.tamk.tiko.olioohjelmointi;
 
 public interface Loop {
-    public void render();
+    public void render(float deltaTime);
 }

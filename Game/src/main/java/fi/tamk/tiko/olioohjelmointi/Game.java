@@ -20,8 +20,8 @@ public class Game extends GameEngine {
     }
 
     @Override
-    public void render() {
-        player.move();
+    public void render(float deltaTime) {
+        player.move(deltaTime);
     }
 
     public static void main(String [] args) {

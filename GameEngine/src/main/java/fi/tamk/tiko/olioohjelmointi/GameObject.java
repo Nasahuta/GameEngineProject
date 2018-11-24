@@ -7,10 +7,10 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 
 public class GameObject {
-    private int speed;
+    private float speed;
 
-    private int xPosition;
-    private int yPosition;
+    private float xPosition;
+    private float yPosition;
     private Image model;
     private ImageView viewer;
     private Pane pane;
@@ -26,7 +26,7 @@ public class GameObject {
         pane.getChildren().addAll(getImageView());
         yPosition = 0;
         xPosition = 0;
-        speed = 5;
+        speed = 50;
     }
 
     public GameObject(String path, int size) {
@@ -39,7 +39,7 @@ public class GameObject {
         pane.getChildren().addAll(getImageView());
         yPosition = 0;
         xPosition = 0;
-        speed = 5;
+        speed = 50;
     }
 
     public Scene addToScreen() {
@@ -51,20 +51,19 @@ public class GameObject {
         return scene;
     }
 
-    public void move() {
+    public void move(float deltaTime) {
         scene.setOnKeyPressed(e -> {
             e.consume();
 
             switch (e.getCode()) {
-                case UP:    setYPos(getYPos() - speed); break;
-                case RIGHT: setXPos(getXPos() + speed); break;
-                case DOWN:  setYPos(getYPos() + speed); break;
-                case LEFT:  setXPos(getXPos() - speed); break;
+                case UP:    setYPos(getYPos() - speed * deltaTime); break;
+                case RIGHT: setXPos(getXPos() + speed * deltaTime); break;
+                case DOWN:  setYPos(getYPos() + speed * deltaTime); break;
+                case LEFT:  setXPos(getXPos() - speed * deltaTime); break;
             }
         });
 
-        viewer.setLayoutX(getXPos());
-        viewer.setLayoutY(getYPos());
+        update();
     }
 
     public void update() {
@@ -72,11 +71,11 @@ public class GameObject {
         viewer.setLayoutY(getYPos());
     }
 
-    public void setSpeed(int speed) {
+    public void setSpeed(float speed) {
         this.speed = speed;
     }
 
-    public int getSpeed() {
+    public float getSpeed() {
         return this.speed;
     }
 
@@ -92,19 +91,19 @@ public class GameObject {
         return model;
     }
 
-    public void setXPos(int xPos) {
+    public void setXPos(float xPos) {
         this.xPosition = xPos;
     }
 
-    public int getXPos() {
+    public float getXPos() {
         return this.xPosition;
     }
 
-    public void setYPos(int yPos) {
+    public void setYPos(float yPos) {
         this.yPosition = yPos;
     }
 
-    public int getYPos() {
+    public float getYPos() {
         return this.yPosition;
     }
 }
