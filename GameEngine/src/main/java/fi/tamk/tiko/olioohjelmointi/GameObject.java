@@ -5,6 +5,7 @@ import java.net.URL;
 import javafx.scene.*;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.*;
 
 public class GameObject {
     private float speed;
@@ -15,6 +16,7 @@ public class GameObject {
     private ImageView viewer;
     private Pane pane;
     private Scene scene;
+    private Rectangle rectangle;
 
     public GameObject(String path) {
         model = new Image(getClass().getResourceAsStream(path));
@@ -69,6 +71,11 @@ public class GameObject {
     public void update() {
         viewer.setLayoutX(getXPos());
         viewer.setLayoutY(getYPos());
+        
+        if (rectangle != null) {
+            rectangle.setX(getXPos());
+            rectangle.setY(getYPos());
+        }
     }
 
     public void setSpeed(float speed) {
@@ -77,6 +84,18 @@ public class GameObject {
 
     public float getSpeed() {
         return this.speed;
+    }
+
+    public void setRectangle(Rectangle rectangle) {
+        this.rectangle = rectangle;
+    }
+
+    public void setRectangle(float x, float y, float width, float height) {
+        this.rectangle = new Rectangle(x,y,width,height);
+    }
+
+    public Rectangle getRectangle() {
+        return rectangle;
     }
 
     public Pane getPane() {
