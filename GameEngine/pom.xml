@@ -4,7 +4,10 @@
   <groupId>fi.tamk.tiko.olioohjelmointi</groupId>
   <artifactId>GameEngine</artifactId>
   <packaging>jar</packaging>
-  <version>0.3</version>
+  <build>
+   <finalName>${project.artifactId}</finalName>
+  </build>
+  <version>0.6</version>
   <properties>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
@@ -19,42 +22,4 @@
         <scope>test</scope>
     </dependency>
   </dependencies>
-  <build>
-    <plugins>
-        <plugin>
-            <groupId>org.codehaus.mojo</groupId>
-            <artifactId>exec-maven-plugin</artifactId>
-            <version>1.5.0</version>
-            <configuration>
-                <mainClass>fi.tamk.tiko.olioohjelmointi.Sovellus</mainClass>
-            </configuration>
-        </plugin>
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-jar-plugin</artifactId>
-            <version>3.1.0</version>
-            <configuration>
-                <archive>
-                    <manifest>
-                        <addClasspath>true</addClasspath>
-                        <classpathPrefix>lib/</classpathPrefix>
-                        <mainClass>fi.tamk.tiko.olioohjelmointi.Sovellus</mainClass>
-                    </manifest>
-                </archive>
-            </configuration>
-        </plugin>
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-jar-plugin</artifactId>
-            <version>3.0.2</version>
-            <configuration>
-                <archive>
-                    <manifest>
-                        <mainClass>fi.tamk.tiko.olioohjelmointi.Sovellus</mainClass>
-                    </manifest>
-                </archive>
-            </configuration>
-        </plugin>
-    </plugins>
-  </build>
 </project>

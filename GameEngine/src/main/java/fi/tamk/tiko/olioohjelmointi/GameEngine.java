@@ -4,7 +4,7 @@ import javafx.application.*;
 import javafx.animation.AnimationTimer;
 
 public abstract class GameEngine extends Application implements Loop {
-    float prevTime = System.nanoTime();
+    private float prevTime = System.nanoTime();
 
     @Override
     public void init() {

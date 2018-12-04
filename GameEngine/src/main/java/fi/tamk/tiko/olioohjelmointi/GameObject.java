@@ -19,38 +19,35 @@ public class GameObject {
     private Rectangle rectangle;
 
     public GameObject(String path) {
-        model = new Image(getClass().getResourceAsStream(path));
+        model = new Image(getClass().getResourceAsStream(path), 130d, 250d,true,false);
         viewer = new ImageView(model);
-        viewer.setFitWidth(200);
-        viewer.setPreserveRatio(true);
-        viewer.setSmooth(true);
         pane = new Pane();
         pane.getChildren().addAll(getImageView());
         yPosition = 0;
         xPosition = 0;
         speed = 50;
+        setRectangle(xPosition,yPosition,(float)model.getWidth(),(float)model.getHeight());
     }
 
-    public GameObject(String path, int size) {
-        model = new Image(getClass().getResourceAsStream(path));
+    public GameObject(String path, double size) {
+        model = new Image(getClass().getResourceAsStream(path), size, size,true,true);
         viewer = new ImageView(model);
-        viewer.setFitWidth(size);
-        viewer.setPreserveRatio(true);
-        viewer.setSmooth(true);
         pane = new Pane();
         pane.getChildren().addAll(getImageView());
         yPosition = 0;
         xPosition = 0;
         speed = 50;
+        setRectangle(xPosition,yPosition,(float)model.getWidth(),(float)model.getHeight());
     }
 
-    public Scene addToScreen() {
-        Group root = new Group();
-        root.getChildren().add(getPane());
-        scene = new Scene(root);
-        scene.setFill(Color.BLACK);
-
-        return scene;
+    /**
+     * Checks for collision between rectangles.
+     *
+     * @param b is the one to be compared to.
+     * @return boolean true if collision is detected.
+     */
+    public boolean collision(Rectangle b) {
+        return rectangle.getBoundsInLocal().intersects(b.getBoundsInLocal());
     }
 
     public void move(float deltaTime) {
@@ -68,6 +65,11 @@ public class GameObject {
         update();
     }
 
+    /**
+     * Updates position.
+     *
+     * Updates image and rectangle position.
+     */
     public void update() {
         viewer.setLayoutX(getXPos());
         viewer.setLayoutY(getYPos());
@@ -86,12 +88,20 @@ public class GameObject {
         return this.speed;
     }
 
+    public void setScene(Scene scene) {
+        this.scene = scene;
+    }
+
+    public Scene getScene() {
+        return scene;
+    }
+
     public void setRectangle(Rectangle rectangle) {
         this.rectangle = rectangle;
     }
 
     public void setRectangle(float x, float y, float width, float height) {
-        this.rectangle = new Rectangle(x,y,width,height);
+        setRectangle(new Rectangle(x,y,width,height));
     }
 
     public Rectangle getRectangle() {

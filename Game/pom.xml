@@ -4,7 +4,7 @@
   <groupId>fi.tamk.tiko.olioohjelmointi</groupId>
   <artifactId>game</artifactId>
   <packaging>jar</packaging>
-  <version>0.3</version>
+  <version>0.6</version>
   <properties>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
@@ -21,10 +21,11 @@
     <dependency>
         <groupId>fi.tamk.tiko.olioohjelmointi</groupId>
         <artifactId>GameEngine</artifactId>
-        <version>0.3</version>
+        <version>0.6</version>
     </dependency>
   </dependencies>
   <build>
+    <finalName>${project.artifactId}</finalName>
     <plugins>
         <plugin>
             <groupId>org.apache.maven.plugins</groupId>
