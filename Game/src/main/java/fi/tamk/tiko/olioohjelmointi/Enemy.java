@@ -9,7 +9,7 @@ public class Enemy extends GameObject {
     private float speed;
 
     public Enemy(String path, double size) {
-        super(path, size);
+        super(path, size,550,400);
         setSpeed(100);
     }
 

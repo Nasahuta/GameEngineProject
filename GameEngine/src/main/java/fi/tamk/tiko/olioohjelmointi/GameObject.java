@@ -18,23 +18,23 @@ public class GameObject {
     private Scene scene;
     private Rectangle rectangle;
 
-    public GameObject(String path) {
+    public GameObject(String path, float xPosition, float yPosition) {
         model = new Image(getClass().getResourceAsStream(path), 130d, 250d,true,false);
         viewer = new ImageView(model);
         pane = new Pane();
         pane.getChildren().addAll(getImageView());
-        yPosition = 0;
-        xPosition = 0;
+        this.yPosition = yPosition;
+        this.xPosition = xPosition;
         setRectangle(xPosition,yPosition,(float)model.getWidth(),(float)model.getHeight());
     }
 
-    public GameObject(String path, double size) {
+    public GameObject(String path, double size, float xPosition, float yPosition) {
         model = new Image(getClass().getResourceAsStream(path), size, size,true,true);
         viewer = new ImageView(model);
         pane = new Pane();
         pane.getChildren().addAll(getImageView());
-        yPosition = 0;
-        xPosition = 0;
+        this.yPosition = yPosition;
+        this.xPosition = xPosition;
         setRectangle(xPosition,yPosition,(float)model.getWidth(),(float)model.getHeight());
     }
 

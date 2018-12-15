@@ -11,7 +11,7 @@ public class Player extends GameObject {
     private float speed;
 
     public Player(String path) {
-        super(path);
+        super(path,0,0);
         setSpeed(200);
     }
 
