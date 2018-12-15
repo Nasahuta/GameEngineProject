@@ -6,6 +6,7 @@ import javafx.scene.*;
 
 import fi.tamk.tiko.olioohjelmointi.*;
 
+@SuppressWarnings("all")
 public class Game extends GameEngine {
     private Player player;
     private Enemy enemy;
@@ -18,7 +19,7 @@ public class Game extends GameEngine {
 
         Group root = new Group();
         root.getChildren().addAll(player.getPane(), enemy.getPane());
-        scene = new Scene(root);
+        scene = initializeScene(new Scene(root));
         enemy.setScene(scene);
         player.setScene(scene);
 

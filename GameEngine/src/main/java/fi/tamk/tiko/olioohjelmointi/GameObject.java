@@ -7,8 +7,8 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.*;
 
+@SuppressWarnings("all")
 public class GameObject {
-    private float speed;
 
     private float xPosition;
     private float yPosition;
@@ -25,7 +25,6 @@ public class GameObject {
         pane.getChildren().addAll(getImageView());
         yPosition = 0;
         xPosition = 0;
-        speed = 50;
         setRectangle(xPosition,yPosition,(float)model.getWidth(),(float)model.getHeight());
     }
 
@@ -36,7 +35,6 @@ public class GameObject {
         pane.getChildren().addAll(getImageView());
         yPosition = 0;
         xPosition = 0;
-        speed = 50;
         setRectangle(xPosition,yPosition,(float)model.getWidth(),(float)model.getHeight());
     }
 
@@ -48,21 +46,6 @@ public class GameObject {
      */
     public boolean collision(Rectangle b) {
         return rectangle.getBoundsInLocal().intersects(b.getBoundsInLocal());
-    }
-
-    public void move(float deltaTime) {
-        scene.setOnKeyPressed(e -> {
-            e.consume();
-
-            switch (e.getCode()) {
-                case UP:    setYPos(getYPos() - speed * deltaTime); break;
-                case RIGHT: setXPos(getXPos() + speed * deltaTime); break;
-                case DOWN:  setYPos(getYPos() + speed * deltaTime); break;
-                case LEFT:  setXPos(getXPos() - speed * deltaTime); break;
-            }
-        });
-
-        update();
     }
 
     /**
@@ -78,14 +61,6 @@ public class GameObject {
             rectangle.setX(getXPos());
             rectangle.setY(getYPos());
         }
-    }
-
-    public void setSpeed(float speed) {
-        this.speed = speed;
-    }
-
-    public float getSpeed() {
-        return this.speed;
     }
 
     public void setScene(Scene scene) {

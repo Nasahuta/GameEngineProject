@@ -2,6 +2,7 @@ package fi.tamk.tiko.olioohjelmointi;
 
 import fi.tamk.tiko.olioohjelmointi.*;
 
+@SuppressWarnings("all")
 public class Enemy extends GameObject {
     private boolean goingRight = true;
     private boolean goingDown = true;
@@ -9,11 +10,9 @@ public class Enemy extends GameObject {
 
     public Enemy(String path, double size) {
         super(path, size);
-        super.setSpeed(100);
-        speed = super.getSpeed();
+        setSpeed(100);
     }
 
-    @Override
     public void move(float deltaTime) {
         if (goingRight) {
             if ((getXPos() + speed * deltaTime + getRectangle().getWidth()) < getScene().getWidth()) {
@@ -48,5 +47,13 @@ public class Enemy extends GameObject {
         }
 
         update();
+    }
+
+    public void setSpeed(float speed) {
+        this.speed = speed;
+    }
+
+    public float getSpeed() {
+        return this.speed;
     }
 }
