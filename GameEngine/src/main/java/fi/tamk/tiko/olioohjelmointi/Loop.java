@@ -1,9 +1,11 @@
 package fi.tamk.tiko.olioohjelmointi;
 
 /**
+ * Defines the game loop.
  * 
- *
- *
+ * @author  Joni Alanko <joni.alanko@cs.tamk.fi>
+ * @since   2018.1812
+ * @version 1.0
  */
 public interface Loop {
 
