@@ -4,3 +4,4 @@ bin/
 **.project
 .vscode/
 **.classpath
+**HighScore.txt
